@@ -1,5 +1,5 @@
 <template>
-    <div class="header light">
+    <div class="header light-bottom light-color">
         <div id="divider">
             <div id="info">
                 <img src="@/assets/logo.png" alt="Logo">
@@ -7,7 +7,7 @@
             </div>
             <div id="mode">
                 <i class="fas fa-sun fa-lg"></i>
-                <div class="switch light-sw" :class="isLight? 'start' : 'end' ">
+                <div class="switch light-border" :class="isLight? 'start' : 'end' ">
                     <span @click="changeMode" class="checkbox light-bg">
                         
                     </span>
@@ -53,19 +53,9 @@ img{
     min-width: 100vw;
     padding: 5px;
 }
-.light{
-    border-bottom: 1px solid #35495E;
-    color: #35495E;
-}
-.light-sw{
-    background: #F1F1F1;
-    border: 1px solid #35495E;
-    color: #35495E;
-}
-.light-bg{
-    background-color: #FFFFFF;
-}
+
 .switch{
+    background: #F1F1F1;
     padding: 3px;
     width: 50px;
     border-radius: 50px;
