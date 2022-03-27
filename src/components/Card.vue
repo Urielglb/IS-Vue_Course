@@ -1,5 +1,5 @@
 <template>
-  <div class="light-border light-color card">
+  <div class="card" :class="borderClass">
     <div class="content">
       <div class="center">
         <img :src="book.authorImg" alt="Imagen autor" @click="changeRoute(book)" />
@@ -22,6 +22,8 @@
 <script setup>
 import { defineProps } from "vue";
 import { useRouter } from "vue-router";
+import {storeToRefs} from 'pinia'
+import {useModeStore} from '@/store/mode.js'
 
 const router = useRouter()
 
@@ -40,6 +42,11 @@ const changeRoute = (book)=>{
     }
   })
 }
+
+const mode = useModeStore()
+
+const { borderClass } = storeToRefs(mode)
+
 </script>
 
 <style lang="css" scoped>

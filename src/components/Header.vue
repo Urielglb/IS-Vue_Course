@@ -1,5 +1,5 @@
 <template>
-    <div class="header light-bottom light-color">
+    <div class="header" :class="mainClasses + ' ' + bottomClass">
         <div id="divider">
             <div id="info">
                 <img src="@/assets/logo.png" alt="Logo">
@@ -7,9 +7,8 @@
             </div>
             <div id="mode">
                 <i class="fas fa-sun fa-lg"></i>
-                <div class="switch light-border" :class="isLight? 'start' : 'end' ">
-                    <span @click="changeMode" class="checkbox light-bg">
-                        
+                <div class="switch" :class="switchClasses">
+                    <span @click="changeMode" class="checkbox" :class="bgClass" >
                     </span>
                 </div>
                 <i class="fas fa-moon fa-lg"></i>
@@ -19,22 +18,23 @@
 </template>
 
 <script setup>
-import {defineProps, ref, computed} from 'vue'
-  defineProps({
-        title:{
-            type: String,
-            required: true
-        }
-    })
+import {defineProps} from 'vue'
+import { storeToRefs } from 'pinia'
+import {useModeStore} from '@/store/mode.js'
 
-    const mode = ref('light')
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+});
 
-    const isLight = computed(()=>mode.value == 'light' ? true : false)  
+const mode = useModeStore()
 
-    const changeMode = () =>{
-        mode.value = mode.value === 'dark' ? 'light' : 'dark'
-        console.log("Holaaaaaa");
-    }
+const { mainClasses, switchClasses, bgClass, bottomClass } = storeToRefs(mode)
+
+const { changeMode } = mode
+
 </script>
 
 <style scoped>
@@ -55,7 +55,6 @@ img{
 }
 
 .switch{
-    background: #F1F1F1;
     padding: 3px;
     width: 50px;
     border-radius: 50px;
@@ -77,6 +76,7 @@ img{
     width: 20px;
     border-radius: 100%;
     cursor: pointer;
+    
 }
 
 #divider{

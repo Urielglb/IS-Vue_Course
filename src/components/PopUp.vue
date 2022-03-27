@@ -1,5 +1,5 @@
 <template>
-    <div class="form light-bg light-border">
+    <div class="form" :class="mainClasses + ' ' + borderClass">
         <h2 @click="$emit('close')"><i class="fas fa-times"></i></h2>
         <h4>Agrega Libro</h4>
         <div class="form-input">
@@ -28,6 +28,8 @@
 
 <script setup>
 import { reactive} from 'vue';
+import {useModeStore} from '@/store/mode.js'
+import {storeToRefs} from 'pinia'
 const book = reactive({
     title:'',
     author:'',
@@ -35,6 +37,10 @@ const book = reactive({
     published:'',
     gender:'',
 })
+
+const mode = useModeStore()
+
+const { mainClasses, borderClass } = storeToRefs(mode)
 
 </script>
 
@@ -44,7 +50,9 @@ label{
 }
 
 input{
-    border:none
+    border:none;
+    background-color: inherit;
+    border: inherit
 }
 
 h2{

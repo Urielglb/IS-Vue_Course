@@ -9,7 +9,7 @@ import Header from '@/components/Header'
 
 a{
   text-decoration: none;
-  color: #35495E;
+  color:inherit
 }
 
 button{
@@ -35,6 +35,34 @@ button{
 
 .light-hl{
   color: #FFFFFF !important;
+}
+
+.light-contrast{
+  background: #F1F1F1;
+}
+
+.dark-bottom{
+    border-bottom: 1px solid #FFFFFF !important;
+}
+
+.dark-border{
+    border: 1px solid #FFFFFF !important;
+}
+
+.dark-bg{
+    background-color: #1A1A1A;
+}
+
+.dark-color{
+    color: #FFFFFF !important;
+}
+
+.dark-hl{
+  color: #1A1A1A !important;
+}
+
+.dark-contrast{
+  background: #2F2F2F;
 }
 
 .center{

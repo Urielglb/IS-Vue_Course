@@ -1,16 +1,18 @@
 <template>
-    <div>
+    <div :class="mainClasses" style="min-height:100vh">
         <div class="cover" :style="`background-image:url(${book.img})`">
             <img :src="book.authorImg" alt="Autor" >
         </div>
+        <h1>{{book.title}}</h1>
+      <p>De {{book.author}} publicado en {{book.published}} del genero {{book.gender}}</p>
     </div>
-    <h1>{{book.title}}</h1>
-    <p>De {{book.author}} publicado en {{book.published}} del genero {{book.gender}}</p>
 </template>
 
 <script setup>
 import { useRoute } from 'vue-router'
 import { reactive } from 'vue';
+import {useModeStore} from '@/store/mode.js'
+import {storeToRefs} from 'pinia'
 
 const route = useRoute()
 
@@ -44,6 +46,10 @@ const books = reactive([
 ])
 
 const book = reactive(books.find((el) => el.title === title))
+
+const mode = useModeStore()
+
+const { mainClasses } = storeToRefs(mode)
 
 </script>
 

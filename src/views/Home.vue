@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="mainClasses">
       <PopUp v-if="popUp" @close="popUp = false" @add="addBook" />
       <h2 @click="popUp = true"><i class="fas fa-plus"></i></h2>
       <div class="cards">
@@ -12,6 +12,8 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
+import {storeToRefs} from 'pinia'
+import {useModeStore} from '@/store/mode.js'
 import Card from '@/components/Card'
 import PopUp from '@/components/PopUp'
 
@@ -45,6 +47,10 @@ const addBook = (book) =>{
   popUp.value = false
   books.push(book)
 }
+
+const mode = useModeStore()
+
+const { mainClasses } = storeToRefs(mode)
 
 </script>
 <style scoped>
