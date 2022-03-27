@@ -3,7 +3,7 @@
         <div id="divider">
             <div id="info">
                 <img src="@/assets/logo.png" alt="Logo">
-                <h1> {{title}}</h1>
+                <h1><router-link :to="{name:'Home'}">{{title}}</router-link></h1>
             </div>
             <div id="mode">
                 <i class="fas fa-sun fa-lg"></i>

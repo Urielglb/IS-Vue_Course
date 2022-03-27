@@ -2,10 +2,14 @@
   <div class="light-border light-color card">
     <div class="content">
       <div class="center">
-        <img :src="book.authorImg" alt="Imagen autor" />
+        <img :src="book.authorImg" alt="Imagen autor" @click="changeRoute(book)" />
       </div>
       <div>
-        <h1>{{ book.title }}</h1>
+        <h1>
+          <router-link :to="{ name: 'Book', params: { title: book.title } }">{{
+            book.title
+          }}</router-link>
+        </h1>
         <div class="general-data">
           <p>Género:{{ book.gender }}</p>
           <p>De:{{ book.author }}</p>
@@ -17,12 +21,25 @@
 
 <script setup>
 import { defineProps } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
+
 defineProps({
   book: {
     type: String,
     required: true,
   },
 });
+
+const changeRoute = (book)=>{
+  router.push({
+    name: 'Book',
+    params: {
+      title: book.title
+    }
+  })
+}
 </script>
 
 <style lang="css" scoped>

@@ -7,6 +7,11 @@ import Header from '@/components/Header'
 </script>
 <style>
 
+a{
+  text-decoration: none;
+  color: #35495E;
+}
+
 button{
   margin-bottom: 10px;
   padding: 5px;
@@ -18,18 +23,18 @@ button{
     border-bottom: 1px solid #35495E !important;
 }
 .light-border{
-    border: 1px solid #35495E;
+    border: 1px solid #35495E !important;
 }
 .light-bg{
     background-color: #FFFFFF;
 }
 
 .light-color{
-    color: #35495E;
+    color: #35495E !important;
 }
 
 .light-hl{
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .center{
